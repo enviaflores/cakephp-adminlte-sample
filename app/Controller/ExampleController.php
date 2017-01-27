@@ -1,0 +1,39 @@
+<?php
+App::uses('AdminLTEController', 'AdminLTE.Controller');
+
+class ExampleController extends AdminLTEController {
+
+    public function login()
+    {
+        $this->setLayoutHeader('AdminLTE 2 | Log in');
+        $this->setLayoutOptions(self::LOGIN_LAYOUT);
+    }
+
+    public function twoside()
+    {
+       $this->setLayoutHeader('AdminLTE 2 | Two Side Select');
+        $this->setBreadcrumb(array(
+            array(
+                'href' => '#',
+                'title' => 'Home',
+                'fa-icon' => 'dashboard'
+            ),
+            array(
+                'href' => '#',
+                'title' => 'Example'
+            ),
+            array(
+                'active' => true,
+                'title' => 'Two Side Select'
+            )
+        ));
+        $this->setLayoutOptions(self::FIXED_LAYOUT | self::CONTROL_SIDEBAR);
+        $this->Flash->info('Two Side Select Example.', array(
+            'plugin' => 'AdminLTE',
+            'params' => array(
+                'header' => 'Tip!'
+            )
+        ));
+    }
+    
+}
