@@ -36,4 +36,31 @@ class ExampleController extends AdminLTEController {
         ));
     }
     
+    public function image_widget(){
+        FB::info($this->request);
+        $this->setLayoutHeader('AdminLTE 2 | Image Widget');
+        $this->setBreadcrumb(array(
+            array(
+                'href' => '#',
+                'title' => 'Home',
+                'fa-icon' => 'dashboard'
+            ),
+            array(
+                'href' => '#',
+                'title' => 'Example'
+            ),
+            array(
+                'active' => true,
+                'title' => 'Image Widget'
+            )
+        ));
+        $this->setLayoutOptions(self::FIXED_LAYOUT | self::CONTROL_SIDEBAR);
+        $this->Flash->info('Image Widget Select Example.', array(
+            'plugin' => 'AdminLTE',
+            'params' => array(
+                'header' => 'Tip!'
+            )
+        ));
+    }
+    
 }
