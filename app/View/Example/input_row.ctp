@@ -54,16 +54,33 @@ $this->Html->contentBlockStart(array(
     'footer' => 'Footer'
 ));
 
-echo $this->Form->inputRow($this->Form->input('Field1'), $this->Form->input('Field2'));
+echo $this->Form->inputRow($this->Form->input('Field1'), $this->Form->input('Field2'), array(
+    'settings' => array(
+        'pre' => '<hr>',
+        'style' => 'border: 1px solid blue;'
+    )
+));
 
-echo $this->Form->inputRow($this->Form->input('Field1'), $this->Form->input('Field2'), $this->Form->input('Field3'));
+echo $this->Form->inputRow($this->Form->input('Field1'), $this->Form->input('Field2'), $this->Form->input('Field3'), array(
+    'settings' => array(
+        'style' => 'border: 1px solid green;'
+    )
+));
 
-echo $this->Form->inputRow($this->Form->input('Field1'), $this->Form->input('Field2'), $this->Form->input('Field3'), $this->Form->input('Field4'));
+echo $this->Form->inputRow($this->Form->input('Field1'), $this->Form->input('Field2'), $this->Form->input('Field3'), $this->Form->input('Field4'), array(
+    'settings' => array(
+        'style' => 'border: 1px solid orange;'
+    )
+));
 
 echo $this->Form->inputRow(array(
     'size' => 2,
     'content' => $this->Form->input('Field1')
-), $this->Form->input('Field2'), $this->Form->input('Field3'), $this->Form->input('Field4'));
+), $this->Form->input('Field2'), $this->Form->input('Field3'), $this->Form->input('Field4'), array(
+    'settings' => array(
+        'style' => 'border: 1px solid black;'
+    )
+));
 
 echo $this->Form->inputRow(array(
     'size' => 2,
@@ -72,7 +89,6 @@ echo $this->Form->inputRow(array(
     'size' => 6,
     'content' => $this->Form->input('Field2')
 ), $this->Form->input('Field3'), $this->Form->input('Field4'));
-
 
 echo $this->Form->inputRow(array(
     'size' => 2,
@@ -81,8 +97,11 @@ echo $this->Form->inputRow(array(
 ), array(
     'size' => 6,
     'content' => $this->Form->input('Field2')
-), $this->Form->input('Field3'), $this->Form->input('Field4'));
-
+), $this->Form->input('Field3'), $this->Form->input('Field4'), array(
+    'settings' => array(
+        'post' => '<span>PostHtml</span>'
+    )
+));
 
 $this->Html->contentBlockEnd();
 $this->Html->sectionEnd();
