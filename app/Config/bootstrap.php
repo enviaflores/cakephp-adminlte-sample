@@ -125,6 +125,7 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load('AdminLTE');
+CakePlugin::load('DebugKit');
 
 require_once '../Lib/AppError.php';
 
