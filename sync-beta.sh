@@ -1,7 +1,12 @@
+#!/bin/sh
+
 rsync \
-	--delete \
-	--exclude='.git/' \
-	--exclude='sync.sh'  \
-	--exclude='.settings/'  \
-	--exclude='app/Plugin/AdminLTE/build'  \
-	-raLve "ssh" . apache@ec2-54-244-58-30.us-west-2.compute.amazonaws.com:/var/www/sites/adminlte.nosearch.net/
+    --delete \
+    --exclude='.git*' \
+    --exclude='.buildpath*' \
+    --exclude='.externalToolBuilders*' \
+    --exclude='.project*' \
+    --exclude='.settings*' \
+    --exclude="sync*" \
+    --exclude='.settings/' \
+	-raLve "ssh" . apache@beta-1.enviaflores.com:/var/www/sites/adminlte.enviaflores.com/
