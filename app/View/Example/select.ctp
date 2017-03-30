@@ -139,5 +139,31 @@ echo \$this->Form->input('multiselect', array(
     )
 ));
 
+echo $this->Form->input('simple_select', array(
+    'type' => 'select',
+    'options' => $selected_options,
+    'label' => __('Referencias'),
+    'empty' => __('Seleccionar...'),
+    'select2_options' => array(
+        'placeholder' => __('Seleccionar...')
+    )
+));
+
+echo $this->Form->input('multi_select', array(
+    'type' => 'select',
+    'multiple' => 'multiple',
+    'value' => array(
+        3,
+        6,
+        8
+    ),
+    'options' => $selected_options,
+    'label' => __('Referencias'),
+    'empty' => __('Seleccionar...'),
+    'select2_options' => array(
+        'placeholder' => __('Seleccionar...')
+    )
+));
+
 $this->Html->contentBlockEnd();
 $this->Html->sectionEnd();
