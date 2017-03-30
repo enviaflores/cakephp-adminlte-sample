@@ -1,7 +1,8 @@
 <?php
 App::uses('AdminLTEController', 'AdminLTE.Controller');
 
-class ExampleController extends AdminLTEController {
+class ExampleController extends AdminLTEController
+{
 
     public function login()
     {
@@ -9,9 +10,9 @@ class ExampleController extends AdminLTEController {
         $this->setLayoutOptions(self::LOGIN_LAYOUT);
     }
 
-    public function twoside()
+    public function select()
     {
-       $this->setLayoutHeader('AdminLTE 2 | Two Side Select');
+        $this->setLayoutHeader('AdminLTE 2 | Two Side Select');
         $this->setBreadcrumb(array(
             array(
                 'href' => '#',
@@ -24,19 +25,20 @@ class ExampleController extends AdminLTEController {
             ),
             array(
                 'active' => true,
-                'title' => 'Two Side Select'
+                'title' => 'Select'
             )
         ));
         $this->setLayoutOptions(self::FIXED_LAYOUT | self::CONTROL_SIDEBAR);
-        $this->Flash->info('Two Side Select Example.', array(
+        $this->Flash->info('Select Example.', array(
             'plugin' => 'AdminLTE',
             'params' => array(
                 'header' => 'Tip!'
             )
         ));
     }
-    
-public function image_widget(){
+
+    public function image_widget()
+    {
         FB::info($this->request);
         $this->setLayoutHeader('AdminLTE 2 | Image Widget');
         $this->setBreadcrumb(array(
@@ -62,8 +64,9 @@ public function image_widget(){
             )
         ));
     }
-    
-    public function input_row(){
+
+    public function input_row()
+    {
         FB::info($this->request);
         $this->setLayoutHeader('AdminLTE 2 | Input Row');
         $this->setBreadcrumb(array(
@@ -89,5 +92,4 @@ public function image_widget(){
             )
         ));
     }
-    
 }

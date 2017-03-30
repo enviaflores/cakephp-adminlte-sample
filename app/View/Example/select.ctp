@@ -77,7 +77,7 @@ $current_value = array(
     8
 );
 
-$two_side_html = $this->Form->input('multiselect', array(
+echo $this->Form->input('multiselect', array(
     'type' => 'select',
     'value' => $current_value,
     'options' => $selected_options,
@@ -88,10 +88,56 @@ $two_side_html = $this->Form->input('multiselect', array(
             'right' => '<input type="text" name="q" class="form-control" placeholder="Search..." />'
         )
     ),
-    'fireSearch' => 'function(value) { return value . length > 3;}'
+    'fireSearch' => 'function(value) {
+        return value . length > 3;
+    }'
 ));
-FB::info($two_side_html, __METHOD__);
 
-print $two_side_html;
+echo $this->Form->input('two_side_src_code', array(
+    'label' => 'Two Side Source Code (PHP)',
+    'type' => 'textarea',
+    'value' => "
+<?php
+echo \$this->Form->input('multiselect', array(
+    'type' => 'select',
+    'value' => array(
+                3,
+                6,
+                8
+            ),
+    'options' => array(
+                'Items Group 1' => array(
+                    1 => 'Item 1',
+                    2 => 'Item 2',
+                    3 => 'Item 3',
+                    4 => 'Item 4',
+                    5 => 'Item 5'
+                ),
+                6 => 'Item 6',
+                7 => 'Item 7',
+                'Items Group 2' => array(
+                    8 => 'Item 8',
+                    9 => 'Item 9'
+                )
+            ),
+    'label' => __('MultiSelect Box'),
+    'two-side' => array(
+        'search' => array(
+            'left' => '<input type=\"text\" name=\"q\" class=\"form-control\" placeholder=\"Search...\" />',
+            'right' => '<input type=\"text\" name=\"q\" class=\"form-control\" placeholder=\"Search...\" />'
+        )
+    ),
+    'fireSearch' => 'function(value) {
+        return value . length > 3;
+    }'
+));
+
+    ",
+    'codemirror' => array(
+        'mode' => 'application/x-httpd-php',
+        'lineNumbers' => true
+    )
+));
+
 $this->Html->contentBlockEnd();
 $this->Html->sectionEnd();
