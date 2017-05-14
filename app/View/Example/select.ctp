@@ -77,7 +77,41 @@ $current_value = array(
     8
 );
 
-echo $this->Form->input('multiselect', array(
+echo $this->Form->input('init_src_code', array(
+    'label' => 'Initial Values',
+    'type' => 'textarea',
+    'value' => "
+<?php
+\$selected_options = array(
+    'Items Group 1' => array(
+        1 => 'Item 1',
+        2 => 'Item 2',
+        3 => 'Item 3',
+        4 => 'Item 4',
+        5 => 'Item 5'
+    ),
+    6 => 'Item 6',
+    7 => 'Item 7',
+    'Items Group 2' => array(
+        8 => 'Item 8',
+        9 => 'Item 9'
+    )
+);
+
+\$current_value = array(
+    3,
+    6,
+    8
+);
+    ",
+    'codemirror' => array(
+        'mode' => 'application/x-httpd-php',
+        'lineNumbers' => true
+    )
+));
+
+
+echo $this->Form->input('two_side', array(
     'type' => 'select',
     'value' => $current_value,
     'options' => $selected_options,
@@ -98,28 +132,10 @@ echo $this->Form->input('two_side_src_code', array(
     'type' => 'textarea',
     'value' => "
 <?php
-echo \$this->Form->input('multiselect', array(
+echo \$this->Form->input('two_side', array(
     'type' => 'select',
-    'value' => array(
-                3,
-                6,
-                8
-            ),
-    'options' => array(
-                'Items Group 1' => array(
-                    1 => 'Item 1',
-                    2 => 'Item 2',
-                    3 => 'Item 3',
-                    4 => 'Item 4',
-                    5 => 'Item 5'
-                ),
-                6 => 'Item 6',
-                7 => 'Item 7',
-                'Items Group 2' => array(
-                    8 => 'Item 8',
-                    9 => 'Item 9'
-                )
-            ),
+    'value' => \$current_value,
+    'options' => \$selected_options,
     'label' => __('MultiSelect Box'),
     'two-side' => array(
         'search' => array(
@@ -131,7 +147,6 @@ echo \$this->Form->input('multiselect', array(
         return value . length > 3;
     }'
 ));
-
     ",
     'codemirror' => array(
         'mode' => 'application/x-httpd-php',
@@ -141,13 +156,37 @@ echo \$this->Form->input('multiselect', array(
 
 echo $this->Form->input('simple_select', array(
     'type' => 'select',
+    'value' => 3,
     'options' => $selected_options,
-    'label' => __('Referencias'),
+    'label' => __('Simple Select'),
     'empty' => __('Seleccionar...'),
     'select2_options' => array(
         'placeholder' => __('Seleccionar...')
     )
 ));
+
+echo $this->Form->input('simple_select_src_code', array(
+    'label' => 'Simple Select Source Code Sample',
+    'type' => 'textarea',
+    'value' => "
+<?php
+echo \$this->Form->input('simple_select', array(
+    'type' => 'select',
+    'value' => 3,
+    'options' => \$selected_options,
+    'label' => __('Simple Select'),
+    'empty' => __('Seleccionar...'),
+    'select2_options' => array(
+        'placeholder' => __('Seleccionar...')
+    )
+));
+    ",
+    'codemirror' => array(
+        'mode' => 'application/x-httpd-php',
+        'lineNumbers' => true
+    )
+));
+
 
 echo $this->Form->input('multi_select', array(
     'type' => 'select',
@@ -162,6 +201,29 @@ echo $this->Form->input('multi_select', array(
     'empty' => __('Seleccionar...'),
     'select2_options' => array(
         'placeholder' => __('Seleccionar...')
+    )
+));
+
+echo $this->Form->input('multi_select_src_code', array(
+    'label' => 'Multiple Select Source Code Sample',
+    'type' => 'textarea',
+    'value' => "
+<?php
+echo \$this->Form->input('multi_select', array(
+    'type' => 'select',
+    'multiple' => 'multiple',
+    'value' => \$current_value,
+    'options' => \$selected_options,
+    'label' => __('Referencias'),
+    'empty' => __('Seleccionar...'),
+    'select2_options' => array(
+        'placeholder' => __('Seleccionar...')
+    )
+));
+    ",
+    'codemirror' => array(
+        'mode' => 'application/x-httpd-php',
+        'lineNumbers' => true
     )
 ));
 
