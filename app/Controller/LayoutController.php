@@ -12,7 +12,7 @@ class LayoutController extends AppController
     public $uses = array();
 
     /**
-     * Displays a view
+     * Display a view with the layout boxed of AdminLTE
      *
      * @return void
      * @throws NotFoundException When the view file could not be found
@@ -45,6 +45,9 @@ class LayoutController extends AppController
         ));
     }
 
+    /**
+     * Display a view with the layout fixed of AdminLTE
+     */
     public function fixed()
     {
         $this->setLayoutHeader('AdminLTE 2 | Fixed Layout');
@@ -72,6 +75,9 @@ class LayoutController extends AppController
         ));
     }
 
+    /**
+     * Display a view with the layout collapsed sidebar of AdminLTE
+     */
     public function collapsed_sidebar()
     {
         $this->setLayoutHeader('AdminLTE 2 | Collapsed Sidebar Layout');
