@@ -135,4 +135,31 @@ class ExampleController extends AdminLTEController
             )
         ));
     }
+
+    public function sidebar_struct()
+    {
+        $this->setLayoutHeader('AdminLTE | Sidebar Struct');
+        $this->setBreadcrumb(array(
+            array(
+                'href' => '',
+                'title' => 'Home',
+                'fa-icon' => 'dashboard'
+            ),
+            array(
+                'href' => '#',
+                'title' => 'Example'
+            ),
+            array(
+                'active' => true,
+                'title' => 'Sidebar Struct'
+            )
+        ));
+        $this->setLayoutOptions(self::FIXED_LAYOUT | self::CONTROL_SIDEBAR);
+        $this->Flash->info('Sidebar Struct Example', array(
+            'plugin' => 'AdminLTE',
+            'params' => array(
+                'header' => 'Tip!'
+            )
+        ));
+    }
 }
