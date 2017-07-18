@@ -37,4 +37,26 @@ class AppController extends AdminLTEController
         FB::info($this->request, __METHOD__);
     }
 
+    public function beforeRender()
+    {
+        parent::beforeRender();
+
+        /**
+         * AdminLTE SideBarMenu
+         */
+        $left_main_menu = array(
+            'header' => array(
+                'label' => 'Menu'
+            ),
+            'treeview' => array(
+                array(
+                    'label' => __('Sidebar'),
+                    'icon' => 'fa-circle-o',
+                    'a-href' => '/example/sidebar_struct'
+                ),
+            )
+        );
+        Configure::Write('AdminLTELeftSideMainMenu', $left_main_menu);
+    }
+
 }
