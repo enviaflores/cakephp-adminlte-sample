@@ -6,6 +6,30 @@ App::uses('AdminLTEController', 'AdminLTE.Controller');
  */
 class ExampleController extends AdminLTEController
 {
+    public $helpers = ['AdminLTE.AdminLTEWidgets' => [
+        'map_options' => [
+            'center' => [
+                'latitude' => 25.683792,
+                'longitude' => -100.338606
+            ],
+            'zoom' => 13,
+            'type' => 'satellite',
+            'layer' => [
+                'type' => 'heatmap',
+                'data' => [
+                    [25.677167, -100.374260],
+                    [25.675885, -100.349513]
+                ]
+            ],
+            'markers' => [
+                [
+                    'position' => [25.6809602, -100.3680148],
+                    'label' => 'EF',
+                    'title' => 'Enviaflores'
+                ]
+            ]
+        ]
+    ]];
 
     /**
      * Displays a view that show a login page
@@ -161,5 +185,59 @@ class ExampleController extends AdminLTEController
                 'header' => 'Tip!'
             )
         ));
+    }
+
+    public function showMap() {
+        /*
+         * TEST
+         */
+        $left_main_menu = array(
+            'header' => array(
+                'label' => 'Menu'
+            ),
+            'treeview' => array(
+                array(
+                    'label' => __('Sidebar'),
+                    'icon' => 'fa-circle-o',
+                    'a-href' => '/example/sidebar_struct'
+                ),
+                array(
+                    'label' => __('Map'),
+                    'icon' => 'fa-map-o',
+                    'a-href' => Router::url(['controller' => 'Example', 'action' => 'showMap'])
+                )
+            )
+        );
+        Configure::Write('AdminLTELeftSideMainMenu', $left_main_menu);
+    }
+
+    public function testPusher($index=1) {
+        App::import('Vendor', 'Pusher/autoload');
+        $message = '';
+
+        try {
+            $options = array(
+                'cluster' => 'us2',
+                'useTLS' => true
+            );
+            $pusher = new Pusher\Pusher(
+                '810e43c63bf0d8e80ad8',
+                '238f33f49527f90d236a',
+                '624684',
+                $options
+            );
+
+            $m_data = file_get_contents(WWW_ROOT . "geo_test{$index}.json");
+            if ($m_data !== false) {
+                $data['payload'] = $m_data;
+                $pusher->trigger('my-channel', 'my-event', $data);
+                $message = 'Done';
+            }
+        } catch (\Pusher\PusherException $e) {
+            LogError($e->getMessage());
+            $message = $e->getTraceAsString();
+        } finally {
+            $this->set('message', $message);
+        }
     }
 }

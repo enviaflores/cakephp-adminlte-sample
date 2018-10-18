@@ -31,8 +31,6 @@ App::uses('AdminLTEController', 'AdminLTE.Controller');
  */
 class AppController extends AdminLTEController
 {
-
-    
     public function beforeFilter(){
         FB::info($this->request, __METHOD__);
     }
@@ -54,9 +52,13 @@ class AppController extends AdminLTEController
                     'icon' => 'fa-circle-o',
                     'a-href' => '/example/sidebar_struct'
                 ),
+                array(
+                    'label' => __('Map'),
+                    'icon' => 'fa-map-o',
+                    'a-href' => Router::url(['controller' => 'Example', 'action' => 'showMap'])
+                )
             )
         );
         Configure::Write('AdminLTELeftSideMainMenu', $left_main_menu);
     }
-
 }

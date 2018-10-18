@@ -1,0 +1,1 @@
+<?= $this->AdminLTEWidgets->drawMap(); ?>

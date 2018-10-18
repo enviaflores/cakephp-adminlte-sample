@@ -36,6 +36,12 @@
  */
 	Configure::write('debug', 2);
 
+
+	Configure::write('google_maps_key', 'AIzaSyANsaUk9qJPzrofJAcGlVsDjRwsfB1IWJg');
+	Configure::write('Pusher', [
+	    'api_key' => '810e43c63bf0d8e80ad8',
+        'cluster' => 'us2'
+    ]);
 /**
  * Configure the Error handler used to handle errors for your application. By default
  * ErrorHandler::handleError() is used. It will display errors using Debugger, when debug > 0

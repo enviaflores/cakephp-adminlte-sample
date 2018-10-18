@@ -9,4 +9,4 @@ rsync \
     --exclude='.settings*' \
     --exclude="sync*" \
     --exclude='.settings/' \
-	-raLve "ssh" . apache@beta-1.enviaflores.com:/var/www/sites/adminlte.enviaflores.com/
+	-raLve "ssh" . apache@beta-5.enviaflores.com:/var/www/sites/adminlte.enviaflores.com/
