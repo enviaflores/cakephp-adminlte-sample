@@ -13,7 +13,7 @@ class ExampleController extends AdminLTEController
                 'longitude' => -100.338606
             ],
             'zoom' => 13,
-            'type' => 'satellite',
+            // 'type' => 'satellite',
             'layer' => [
                 'type' => 'heatmap',
                 'data' => [
@@ -27,7 +27,10 @@ class ExampleController extends AdminLTEController
                     'label' => 'EF',
                     'title' => 'Enviaflores'
                 ]
-            ]
+            ],
+            'disable_default_ui' => true,
+            'debuggable' => true,
+            'container_size' => 10
         ]
     ]];
 
