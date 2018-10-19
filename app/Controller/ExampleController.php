@@ -30,7 +30,8 @@ class ExampleController extends AdminLTEController
             ],
             'disable_default_ui' => true,
             'debuggable' => true,
-            'container_size' => 10
+            'container_size' => 10,
+            'disable_zoom' => true
         ]
     ]];
 
@@ -242,5 +243,89 @@ class ExampleController extends AdminLTEController
         } finally {
             $this->set('message', $message);
         }
+    }
+
+    public function mapTestCases($case=null) {
+        switch ($case) {
+            case 'disable_zoom':
+                $text = "<?= \$this->AdminLTEWidgets->drawMap([
+    'disable_zoom' => true
+]) ?>";
+                $options = [
+                    'disable_zoom' => true
+                ];
+                break;
+            case 'markers':
+                $text = "<?= \$this->AdminLTEWidgets->drawMap([
+    'markers' => [
+        [
+            'position' => [25.6809602, -100.3680148],
+            'label' => 'EF',
+            'title' => 'Enviaflores'
+        ]
+    ]
+]) ?>";
+                $options = [
+                    'markers' => [
+                        [
+                            'position' => [25.6809602, -100.3680148],
+                            'label' => 'EF',
+                            'title' => 'Enviaflores'
+                        ]
+                    ]
+                ];
+                break;
+            case 'heatmap':
+                $text = "<?= \$this->AdminLTEWidgets->drawMap([
+    'layer' => [
+        'type' => 'heatmap',
+        'data' => [
+            [25.677167, -100.374260],
+            [25.675885, -100.349513]
+        ]
+    ]
+]) ?>";
+                $options = [
+                    'layer' => [
+                        'type' => 'heatmap',
+                        'data' => [
+                            [25.677167, -100.374260],
+                            [25.675885, -100.349513]
+                        ]
+                    ]
+                ];
+                break;
+            case 'debuggable':
+                $text = "<?= \$this->AdminLTEWidgets->drawMap([
+    'debuggable' => false,
+    'container_size' => 10
+]) ?>";
+                $options = [
+                    'debuggable' => false,
+                    'container_size' => 10
+                ];
+                break;
+            case 'disable_default_ui':
+                $text = "<?= \$this->AdminLTEWidgets->drawMap([
+    'disable_default_ui' => true
+]) ?>";
+                $options = [
+                    'disable_default_ui' => true
+                ];
+                break;
+            case 'type':
+                $text = "<?= \$this->AdminLTEWidgets->drawMap([
+    'type' => 'satellite'
+]) ?>";
+                $options = [
+                    'type' => 'satellite'
+                ];
+                break;
+            default:
+                $text = "<?= \$this->AdminLTEWidgets->drawMap() ?>";
+                $options = [];
+                break;
+        }
+        $this->set(compact('case', 'text', 'options'));
     }
 }
